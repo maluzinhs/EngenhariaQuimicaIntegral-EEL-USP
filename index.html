@@ -48,6 +48,22 @@ h1 {
 
 <h1>Fluxograma – Engenharia Química (EEL-USP)</h1>
 
+%% =======================
+%% ESTILO DAS MATÉRIAS
+%% =======================
+classDef materia fill:#111111,stroke:#0d47a1,stroke-width:2px,color:#e3f2fd;
+
+style P1 fill:#111111,stroke:#333333,stroke-width:2px
+style P2 fill:#111111,stroke:#333333,stroke-width:2px
+style P3 fill:#111111,stroke:#333333,stroke-width:2px
+style P4 fill:#111111,stroke:#333333,stroke-width:2px
+style P5 fill:#111111,stroke:#333333,stroke-width:2px
+style P6 fill:#111111,stroke:#333333,stroke-width:2px
+style P7 fill:#111111,stroke:#333333,stroke-width:2px
+style P8 fill:#111111,stroke:#333333,stroke-width:2px
+style P9 fill:#111111,stroke:#333333,stroke-width:2px
+style P10 fill:#111111,stroke:#333333,stroke-width:2px
+
 <div class="mermaid">
 graph TB
 
@@ -55,126 +71,126 @@ graph TB
 %% 1º PERÍODO
 %% =======================
 subgraph P1["1º Período"]
-  C1[Cálculo I]
-  GA[Geometria Analítica]
-  LIDT[Leitura e Interpretação de Desenho Técnico]
-  IEQ[Introdução à Engenharia Química]
-  QG[Química Geral Experimental]
-  FQ1[Fundamentos de Química para Engenharia I-A]
-  NIV[Nivelamento em Engenharia]
-  EAC[Escrita Acadêmica Científica]
+  C1[Cálculo I]:::materia
+  GA[Geometria Analítica]:::materia
+  LIDT[Leitura e Interpretação de Desenho Técnico]:::materia
+  IEQ[Introdução à Engenharia Química]:::materia
+  QG[Química Geral Experimental]:::materia
+  FQ1[Fundamentos de Química para Engenharia I-A]:::materia
+  NIV[Nivelamento em Engenharia]:::materia
+  EAC[Escrita Acadêmica Científica]:::materia
 end
 
 %% =======================
 %% 2º PERÍODO
 %% =======================
 subgraph P2["2º Período"]
-  C2[Cálculo II]
-  FIS1[Física I]
-  AL[Álgebra Linear]
-  FEXP1[Física Experimental I]
-  CM[Introdução à Ciência dos Materiais]
-  BME[Balanços de Massa e Energia]
-  FQ2[Fundamentos de Química para Engenharia II-A]
-  EI[Empreendedorismo e Inovação]
+  C2[Cálculo II]:::materia
+  FIS1[Física I]:::materia
+  AL[Álgebra Linear]:::materia
+  FEXP1[Física Experimental I]:::materia
+  CM[Introdução à Ciência dos Materiais]:::materia
+  BME[Balanços de Massa e Energia]:::materia
+  FQ2[Fundamentos de Química para Engenharia II-A]:::materia
+  EI[Empreendedorismo e Inovação]:::materia
 end
 
 %% =======================
 %% 3º PERÍODO
 %% =======================
 subgraph P3["3º Período"]
-  EST[Estatística]
-  FIS2[Física II]
-  MEC[Mecânica]
-  C3[Cálculo III]
-  MN[Métodos Numéricos e Computacionais]
-  QO1[Química Orgânica I]
-  QI[Química Inorgânica]
-  SUST[Engenharia da Sustentabilidade]
+  EST[Estatística]:::materia
+  FIS2[Física II]:::materia
+  MEC[Mecânica]:::materia
+  C3[Cálculo III]:::materia
+  MN[Métodos Numéricos e Computacionais]:::materia
+  QO1[Química Orgânica I]:::materia
+  QI[Química Inorgânica]:::materia
+  SUST[Engenharia da Sustentabilidade]:::materia
 end
 
 %% =======================
 %% 4º PERÍODO
 %% =======================
 subgraph P4["4º Período"]
-  C4[Cálculo IV]
-  FEXP2[Física Experimental II]
-  FIS3[Física III]
-  MS[Introdução à Mecânica dos Sólidos]
-  QO2[Química Orgânica II]
-  FT1[Fenômenos de Transporte I]
-  TQ1[Termodinâmica Química Aplicada I]
+  C4[Cálculo IV]:::materia
+  FEXP2[Física Experimental II]:::materia
+  FIS3[Física III]:::materia
+  MS[Introdução à Mecânica dos Sólidos]:::materia
+  QO2[Química Orgânica II]:::materia
+  FT1[Fenômenos de Transporte I]:::materia
+  TQ1[Termodinâmica Química Aplicada I]:::materia
 end
 
 %% =======================
 %% 5º PERÍODO
 %% =======================
 subgraph P5["5º Período"]
-  EA[Eletricidade Aplicada]
-  MIQ[Materiais para a Indústria Química]
-  INST[Instrumentação na Indústria Química]
-  QA[Química Analítica para Engenharia]
-  LEQ1[Laboratório de Engenharia Química I]
-  FT2[Fenômenos de Transporte II]
-  OU1[Operações Unitárias I]
-  TQ2[Termodinâmica Química Aplicada II]
+  EA[Eletricidade Aplicada]:::materia
+  MIQ[Materiais para a Indústria Química]:::materia
+  INST[Instrumentação na Indústria Química]:::materia
+  QA[Química Analítica para Engenharia]:::materia
+  LEQ1[Laboratório de Engenharia Química I]:::materia
+  FT2[Fenômenos de Transporte II]:::materia
+  OU1[Operações Unitárias I]:::materia
+  TQ2[Termodinâmica Química Aplicada II]:::materia
 end
 
 %% =======================
 %% 6º PERÍODO
 %% =======================
 subgraph P6["6º Período"]
-  AI[Análise Instrumental]
-  CQA[Cinética Química Aplicada]
-  CPQ[Controle de Processos Químicos]
-  FT3[Fenômenos de Transporte III]
-  LEQ2[Laboratório de Engenharia Química II]
-  OU2[Operações Unitárias II]
-  BIOQ[Bioquímica]
+  AI[Análise Instrumental]:::materia
+  CQA[Cinética Química Aplicada]:::materia
+  CPQ[Controle de Processos Químicos]:::materia
+  FT3[Fenômenos de Transporte III]:::materia
+  LEQ2[Laboratório de Engenharia Química II]:::materia
+  OU2[Operações Unitárias II]:::materia
+  BIOQ[Bioquímica]:::materia
 end
 
 %% =======================
 %% 7º PERÍODO
 %% =======================
 subgraph P7["7º Período"]
-  POT[Psicologia Organizacional do Trabalho]
-  EMA[Engenharia do Meio Ambiente]
-  RQ[Reatores Químicos]
-  OU3[Operações Unitárias III]
-  LEQ3[Laboratório de Engenharia Química III]
-  EPQ1[Engenharia de Processos Químicos I]
-  EQ[Engenharia da Qualidade]
-  GN[Gestão de Negócios]
-  EB[Engenharia Bioquímica]
+  POT[Psicologia Organizacional do Trabalho]:::materia
+  EMA[Engenharia do Meio Ambiente]:::materia
+  RQ[Reatores Químicos]:::materia
+  OU3[Operações Unitárias III]:::materia
+  LEQ3[Laboratório de Engenharia Química III]:::materia
+  EPQ1[Engenharia de Processos Químicos I]:::materia
+  EQ[Engenharia da Qualidade]:::materia
+  GN[Gestão de Negócios]:::materia
+  EB[Engenharia Bioquímica]:::materia
 end
 
 %% =======================
 %% 8º PERÍODO
 %% =======================
 subgraph P8["8º Período"]
-  PIQ[Projeto na Indústria Química]
-  EE[Engenharia Econômica]
-  POL[Polímeros]
-  LEQ4[Laboratório de Engenharia Química IV]
-  CPQ2[Engenharia de Processos Químicos II]
-  MSP[Modelagem e Simulação de Processos]
-  PQI[Processos Químicos Industriais]
-  PB[Processos Bioquímicos]
+  PIQ[Projeto na Indústria Química]:::materia
+  EE[Engenharia Econômica]:::materia
+  POL[Polímeros]:::materia
+  LEQ4[Laboratório de Engenharia Química IV]:::materia
+  CPQ2[Engenharia de Processos Químicos II]:::materia
+  MSP[Modelagem e Simulação de Processos]:::materia
+  PQI[Processos Químicos Industriais]:::materia
+  PB[Processos Bioquímicos]:::materia
 end
 
 %% =======================
 %% 9º PERÍODO
 %% =======================
 subgraph P9["9º Período"]
-  TCC1[Trabalho de Conclusão de Curso I]
-  ESTAGIO[Estágio Supervisionado]
+  TCC1[Trabalho de Conclusão de Curso I]:::materia
+  ESTAGIO[Estágio Supervisionado]:::materia
 end
 
 %% =======================
 %% 10º PERÍODO
 %% =======================
 subgraph P10["10º Período"]
-  TCC2[Trabalho de Conclusão de Curso II]
+  TCC2[Trabalho de Conclusão de Curso II]:::materia
 end
 
 %% =======================
