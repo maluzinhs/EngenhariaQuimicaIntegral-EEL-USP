@@ -61,13 +61,10 @@ style P8 fill:#111111,stroke:#333333,stroke-width:2px
 style P9 fill:#111111,stroke:#333333,stroke-width:2px
 style P10 fill:#111111,stroke:#333333,stroke-width:2px
 
-<div class="mermaid">
-graph TB
-
 %% =======================
 %% 1º PERÍODO
 %% =======================
-subgraph P1["1º Período"]
+direction LR P1["1º Período"]
   C1[Cálculo I]:::materia
   GA[Geometria Analítica]:::materia
   LIDT[Leitura e Interpretação de Desenho Técnico]:::materia
@@ -78,155 +75,8 @@ subgraph P1["1º Período"]
   EAC[Escrita Acadêmica Científica]:::materia
 end
 
-%% =======================
-%% 2º PERÍODO
-%% =======================
-subgraph P2["2º Período"]
-  C2[Cálculo II]:::materia
-  FIS1[Física I]:::materia
-  AL[Álgebra Linear]:::materia
-  FEXP1[Física Experimental I]:::materia
-  CM[Introdução à Ciência dos Materiais]:::materia
-  BME[Balanços de Massa e Energia]:::materia
-  FQ2[Fundamentos de Química para Engenharia II-A]:::materia
-  EI[Empreendedorismo e Inovação]:::materia
-end
+%% (o restante dos períodos e setas continua IGUAL ao que você já tem)
+</div>
 
-%% =======================
-%% 3º PERÍODO
-%% =======================
-subgraph P3["3º Período"]
-  EST[Estatística]:::materia
-  FIS2[Física II]:::materia
-  MEC[Mecânica]:::materia
-  C3[Cálculo III]:::materia
-  MN[Métodos Numéricos e Computacionais]:::materia
-  QO1[Química Orgânica I]:::materia
-  QI[Química Inorgânica]:::materia
-  SUST[Engenharia da Sustentabilidade]:::materia
-end
-
-%% =======================
-%% 4º PERÍODO
-%% =======================
-subgraph P4["4º Período"]
-  C4[Cálculo IV]:::materia
-  FEXP2[Física Experimental II]:::materia
-  FIS3[Física III]:::materia
-  MS[Introdução à Mecânica dos Sólidos]:::materia
-  QO2[Química Orgânica II]:::materia
-  FT1[Fenômenos de Transporte I]:::materia
-  TQ1[Termodinâmica Química Aplicada I]:::materia
-end
-
-%% =======================
-%% 5º PERÍODO
-%% =======================
-subgraph P5["5º Período"]
-  EA[Eletricidade Aplicada]:::materia
-  MIQ[Materiais para a Indústria Química]:::materia
-  INST[Instrumentação na Indústria Química]:::materia
-  QA[Química Analítica para Engenharia]:::materia
-  LEQ1[Laboratório de Engenharia Química I]:::materia
-  FT2[Fenômenos de Transporte II]:::materia
-  OU1[Operações Unitárias I]:::materia
-  TQ2[Termodinâmica Química Aplicada II]:::materia
-end
-
-%% =======================
-%% 6º PERÍODO
-%% =======================
-subgraph P6["6º Período"]
-  AI[Análise Instrumental]:::materia
-  CQA[Cinética Química Aplicada]:::materia
-  CPQ[Controle de Processos Químicos]:::materia
-  FT3[Fenômenos de Transporte III]:::materia
-  LEQ2[Laboratório de Engenharia Química II]:::materia
-  OU2[Operações Unitárias II]:::materia
-  BIOQ[Bioquímica]:::materia
-end
-
-%% =======================
-%% 7º PERÍODO
-%% =======================
-subgraph P7["7º Período"]
-  POT[Psicologia Organizacional do Trabalho]:::materia
-  EMA[Engenharia do Meio Ambiente]:::materia
-  RQ[Reatores Químicos]:::materia
-  OU3[Operações Unitárias III]:::materia
-  LEQ3[Laboratório de Engenharia Química III]:::materia
-  EPQ1[Engenharia de Processos Químicos I]:::materia
-  EQ[Engenharia da Qualidade]:::materia
-  GN[Gestão de Negócios]:::materia
-  EB[Engenharia Bioquímica]:::materia
-end
-
-%% =======================
-%% 8º PERÍODO
-%% =======================
-subgraph P8["8º Período"]
-  PIQ[Projeto na Indústria Química]:::materia
-  EE[Engenharia Econômica]:::materia
-  POL[Polímeros]:::materia
-  LEQ4[Laboratório de Engenharia Química IV]:::materia
-  CPQ2[Engenharia de Processos Químicos II]:::materia
-  MSP[Modelagem e Simulação de Processos]:::materia
-  PQI[Processos Químicos Industriais]:::materia
-  PB[Processos Bioquímicos]:::materia
-end
-
-%% =======================
-%% 9º PERÍODO
-%% =======================
-subgraph P9["9º Período"]
-  TCC1[Trabalho de Conclusão de Curso I]:::materia
-  ESTAGIO[Estágio Supervisionado]:::materia
-end
-
-%% =======================
-%% 10º PERÍODO
-%% =======================
-subgraph P10["10º Período"]
-  TCC2[Trabalho de Conclusão de Curso II]:::materia
-end
-
-%% =======================
-%% REQUISITOS FRACOS
-%% =======================
-GA --> C2
-C2 --> MN
-GA --> MN
-FIS1 --> FEXP1
-FEXP1 --> FEXP2
-C3 --> FT1
-MEC --> FT1
-BME --> FT1
-FT3 --> LEQ2
-OU2 --> LEQ2
-OU3 --> PIQ
-RQ --> PIQ
-CPQ --> CPQ2
-EPQ1 --> CPQ2
-QO2 --> POL
-QO2 --> BIOQ
-
-%% =======================
-%% REQUISITOS FORTES
-%% =======================
-C1 --> C2
-C2 --> C3
-C3 --> C4
-BME --> TQ1
-TQ1 --> TQ2
-TQ2 --> CQA
-CQA --> RQ
-FT1 --> FT2
-FT2 --> FT3
-OU1 --> OU2
-OU2 --> OU3
-QO1 --> QO2
-QG --> QA
-QA --> AI
-FIS1 --> FIS2
-FIS2 --> FIS3
-TCC1 --> TCC2
+</body>
+</html>
