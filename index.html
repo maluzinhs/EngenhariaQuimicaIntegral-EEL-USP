@@ -1,8 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Fluxograma – Engenharia Química (EEL-USP)</title>
+
+  <!-- Mermaid -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: "default",
+      flowchart: {
+        curve: "linear"
+      }
+    });
+  </script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .mermaid {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Fluxograma – Engenharia Química (EEL-USP)</h1>
+
+<div class="mermaid">
 graph LR
 
-%% =======================
 %% 1º PERÍODO
-%% =======================
 subgraph P1["1º Período"]
   C1[Cálculo I]
   GA[Geometria Analítica]
@@ -13,10 +51,8 @@ subgraph P1["1º Período"]
   NIV[Nivelamento em Engenharia]
   EAC[Escrita Acadêmica Científica]
 end
-
-%% =======================
+  
 %% 2º PERÍODO
-%% =======================
 subgraph P2["2º Período"]
   C2[Cálculo II]
   FIS1[Física I]
@@ -28,9 +64,7 @@ subgraph P2["2º Período"]
   EI[Empreendedorismo e Inovação]
 end
 
-%% =======================
 %% 3º PERÍODO
-%% =======================
 subgraph P3["3º Período"]
   EST[Estatística]
   FIS2[Física II]
@@ -42,9 +76,7 @@ subgraph P3["3º Período"]
   SUST[Engenharia da Sustentabilidade]
 end
 
-%% =======================
 %% 4º PERÍODO
-%% =======================
 subgraph P4["4º Período"]
   C4[Cálculo IV]
   FEXP2[Física Experimental II]
@@ -55,9 +87,7 @@ subgraph P4["4º Período"]
   TQ1[Termodinâmica Química Aplicada I]
 end
 
-%% =======================
 %% 5º PERÍODO
-%% =======================
 subgraph P5["5º Período"]
   EA[Eletricidade Aplicada]
   MIQ[Materiais para a Indústria Química]
@@ -69,9 +99,7 @@ subgraph P5["5º Período"]
   TQ2[Termodinâmica Química Aplicada II]
 end
 
-%% =======================
 %% 6º PERÍODO
-%% =======================
 subgraph P6["6º Período"]
   AI[Análise Instrumental]
   CQA[Cinética Química Aplicada]
@@ -82,9 +110,7 @@ subgraph P6["6º Período"]
   BIOQ[Bioquímica]
 end
 
-%% =======================
 %% 7º PERÍODO
-%% =======================
 subgraph P7["7º Período"]
   POT[Psicologia Organizacional do Trabalho]
   EMA[Engenharia do Meio Ambiente]
@@ -97,9 +123,7 @@ subgraph P7["7º Período"]
   EB[Engenharia Bioquímica]
 end
 
-%% =======================
 %% 8º PERÍODO
-%% =======================
 subgraph P8["8º Período"]
   PIQ[Projeto na Indústria Química]
   EE[Engenharia Econômica]
@@ -111,50 +135,35 @@ subgraph P8["8º Período"]
   PB[Processos Bioquímicos]
 end
 
-%% =======================
 %% 9º PERÍODO
-%% =======================
 subgraph P9["9º Período"]
   TCC1[Trabalho de Conclusão de Curso I]
   ESTAGIO[Estágio Supervisionado]
 end
 
-%% =======================
 %% 10º PERÍODO
-%% =======================
 subgraph P10["10º Período"]
   TCC2[Trabalho de Conclusão de Curso II]
 end
 
-%% =======================
 %% PRÉ-REQUISITOS 
-%% =======================
-
 %% ===== REQUISITOS FRACOS =====
 
 GA --> C2
-
 C2 --> MN
 GA --> MN
-
 FIS1 --> FEXP1
 FEXP1 --> FEXP2
-
 C3 --> FT1
 MEC --> FT1
-
 TQ1 --> TQ2
 BME --> FT1
-
 FT3 --> LEQ2
 OU2 --> LEQ2
-
 OU3 --> PIQ
 RQ --> PIQ
-
 CPQ --> CPQ2
 EPQ1 --> CPQ2
-
 QO2 --> POL
 QO2 --> BIOQ
 
@@ -163,26 +172,19 @@ QO2 --> BIOQ
 C1 --> C2
 C2 --> C3
 C3 --> C4
-
 BME --> TQ1
 TQ1 --> TQ2
 TQ2 --> CQA
 CQA --> RQ
-
 FT1 --> FT2
 FT2 --> FT3
-
 OU1 --> OU2
 OU2 --> OU3
-
 QO1 --> QO2
-
 QG --> QA
 QA --> AI
-
 FIS1 --> FIS2
 FIS2 --> FIS3
-
 TCC1 --> TCC2
 
 %% ===== CORES DAS SETAS =====
