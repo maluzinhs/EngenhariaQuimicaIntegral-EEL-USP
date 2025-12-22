@@ -19,63 +19,36 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #0d0d0d;
+      background: #f4f6f8;
       padding: 20px;
-      color: #e0e0e0;
     }
-
     h1 {
       text-align: center;
-      color: #ffffff;
     }
-
     .mermaid {
-      background: #0d0d0d;
+      background: white;
       padding: 20px;
       border-radius: 8px;
       overflow-x: auto;
     }
   </style>
 </head>
-
 <body>
 
 <h1>Fluxograma – Engenharia Química (EEL-USP)</h1>
 
 <div class="mermaid">
-graph TB
+graph LR
 
-%% =======================
-%% ESTILO DAS MATÉRIAS
-%% =======================
-classDef materia fill:#111111,stroke:#0d47a1,stroke-width:2px,color:#e3f2fd;
+%% 1º período
+C1[Cálculo I]
+GA[Geometria Analítica]
 
-style P1 fill:#111111,stroke:#333333,stroke-width:2px
-style P2 fill:#111111,stroke:#333333,stroke-width:2px
-style P3 fill:#111111,stroke:#333333,stroke-width:2px
-style P4 fill:#111111,stroke:#333333,stroke-width:2px
-style P5 fill:#111111,stroke:#333333,stroke-width:2px
-style P6 fill:#111111,stroke:#333333,stroke-width:2px
-style P7 fill:#111111,stroke:#333333,stroke-width:2px
-style P8 fill:#111111,stroke:#333333,stroke-width:2px
-style P9 fill:#111111,stroke:#333333,stroke-width:2px
-style P10 fill:#111111,stroke:#333333,stroke-width:2px
+%% 2º período
+C2[Cálculo II]
 
-%% =======================
-%% 1º PERÍODO
-%% =======================
-direction LR P1["1º Período"]
-  C1[Cálculo I]:::materia
-  GA[Geometria Analítica]:::materia
-  LIDT[Leitura e Interpretação de Desenho Técnico]:::materia
-  IEQ[Introdução à Engenharia Química]:::materia
-  QG[Química Geral Experimental]:::materia
-  FQ1[Fundamentos de Química para Engenharia I-A]:::materia
-  NIV[Nivelamento em Engenharia]:::materia
-  EAC[Escrita Acadêmica Científica]:::materia
-end
-
-%% (o restante dos períodos e setas continua IGUAL ao que você já tem)
+C1 --> C2
+GA --> C2
 </div>
 
 </body>
