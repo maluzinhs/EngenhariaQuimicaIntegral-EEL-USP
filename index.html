@@ -43,7 +43,7 @@ graph LR
 %% 1º período
 C1[Cálculo I - LOB1003]
 GA[Geometria Analítica - LOB1036]
-LIDT[Leitura e Interpretação de desenho Técnico - LO LOB1009]
+LIDT[Leitura e Interpretação de desenho Técnico - LOB1009]
 IEQ[Introdução à Engenharia Química - LOQ4010]
 QGE[Química Geral Experimental - LOQ4095]
 FQE1[Fundamentos de Química para Engenharia I-A - LOQ4097]
@@ -51,10 +51,110 @@ NE[Nivelamento para Engenharia - LOQ4102]
 EAC[Escrita Acadêmico Científica]
 
 %% 2º período
-C2[Cálculo II]
+C2[Cálculo II - LOB1004]
+F1[Física I - LOB1018]
+AL[Álgebra Linear - LOB1037]
+FisExp1[Física Experimental I - LOB1038]
+ICMAT[Introdução à Ciência dos Materiais - LOM3016]
+BME[Balanço de Massa e Energia - LOQ4053]
+FQE2[Fundamentos de Química para Engenharia II-A - LOQ4098]
+EI[Empreendedorismo e Inovação - LOQ4234]
 
 C1 --> C2
 GA --> C2
+GA --> AL
+
+%% 3º Período
+Es[Estatística - LOB1012]
+F2[Física II - LOB 1019]
+MEC[Mecânica - LOB1024]
+C3[Cálculo III - LOB1052]
+IMNC[Introdução aos Métodos Numéricos e Computacionais - LOB1056]
+QO1[Química Orgânica I - LOQ4037]
+QI[Quimica Inorgânica - LOQ4055]
+ES[Engenharia da Sustentabilidade - LOQ4265]
+
+C2 --> ES
+C1 --> F2
+F1 --> F2
+GA --> MEC 
+F1 --> MEC
+C2 --> C3
+GA --> IMNC
+C2 --> IMNC
+FQ1 --> QO1
+FQ2 --> QO1
+
+%% 4º Período
+C4[Cálculo IV - LOB1006]
+FisExp3[Física Experimental III - LOB1039]
+F3[Física III - LOB1053]
+IMS[Introdução à Mecânica dos Sólidos - LOM3081]
+QO2[Química Orgânica II - LOQ4038]
+FT1[Fenômenos de Transporte I - LOQ4038]
+TDQ1[Termodinâmica Química Aplicada I - LOQ4087]
+
+C3 --> C4
+AL --> C4 
+FisExp1 --> FisExp3
+C2 --> F3
+F2 --> F3
+MEC --> IMS
+QO1 --> QO2
+MEC --> FT1
+C3 --> FT1 
+C2 --> TDQ1
+F2 --> TDQ1
+BME --> TDQ1
+
+%% 5º Período
+EA[Eletricidade Aplicada - LOB1011]
+MIQ[Materiais para a Indústria Química - LOM3022]
+IIQ[Instrumentação na Industria Química - LOQ4009]
+QEA[Química Analítica para Engenharia - LOQ4056]
+LEQ1[Laboratório de Engenharia Química I - LOQ4060]
+FT2[Fenômenos de Transporte II - LOQ4084]
+OP1[Operações Unitárias I - LOQ4085]
+TDQ2[Termodinâmica Química Aplicada II]
+
+F3 --> EA
+ICMAT --> MIQ
+C4 --> IIQ
+FT1 --> IIQ
+Es --> QEA
+FQE2 --> QEA
+QGE --> QEA
+FT1 --> LEQ1 
+C4 --> FT2
+F2 --> FT2
+FT1 --> FT2
+FT1 --> OP1
+TDQ1 --> TDQ2
+
+%%6º Período
+AI[Análise Instrumental - LOQ4001]
+CQA[Cinética Química Aplicada - LOQ4003]
+CPQ[Controle de Processos Químicos - LOQ4004]
+FT3[Fenômenos de Transporte III - LOQ4054]
+LEQ2[Laboratório de Engenharia Química II - LOQ4061]
+OP2[Operações Unitárias II - LOQ4086]
+BQI[Bioquímica - LOT2004]
+
+QEA --> AI
+TDQ2 --> CQA
+C4 --> CPQ
+IIQ --> CPQ
+IMNC --> CPQ
+FT2 --> FT3
+FT1 --> FT3 
+FT2 --> OP2
+QO2 --> BQI 
+
+%%7º Período 
+POT[Psicologia Organizacional e do Trabalho - LOB1031]
+EMA[Engenharia do Meio Ambiente - LOB1046]
+RQ[Reatores Quimicos - LOQ4002]
+OP
 </div>
 
 </body>
