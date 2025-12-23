@@ -6,32 +6,77 @@
 
   <!-- Mermaid -->
   <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-  <script>
-    mermaid.initialize({
-      startOnLoad: true,
-      theme: "default",
-      flowchart: {
-        curve: "linear"
-      }
-    });
-  </script>
+<script>
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: "dark",
+    flowchart: {
+      curve: "linear"
+    }
+  });
+</script>
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f6f8;
-      padding: 20px;
-    }
-    h1 {
-      text-align: center;
-    }
-    .mermaid {
-      background: white;
-      padding: 20px;
-      border-radius: 8px;
-      overflow-x: auto;
-    }
-  </style>
+
+ <style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #2b2b2b;
+    padding: 20px;
+    color: #fff;
+  }
+
+  h1 {
+    text-align: center;
+    color: #4da3ff;
+  }
+
+  .mermaid {
+    background: #2b2b2b;
+    padding: 20px;
+    overflow-x: auto;
+  }
+
+  /* ===== NÓS (matérias) ===== */
+  .node rect {
+    fill: #000 !important;
+    stroke: #4da3ff !important;
+    stroke-width: 1.5px;
+    rx: 6;
+    ry: 6;
+  }
+
+  .node text {
+    fill: #ffffff !important;
+    font-size: 13px;
+  }
+
+  /* Hover no card */
+  .node:hover rect {
+    stroke-width: 3px;
+    filter: drop-shadow(0 0 8px #4da3ff);
+    cursor: pointer;
+  }
+
+  /* ===== SETAS ===== */
+  .edgePath path {
+    stroke: #4da3ff !important;
+    stroke-width: 1.2px;
+    opacity: 0.3;
+  }
+
+  .arrowheadPath {
+    fill: #4da3ff !important;
+    opacity: 0.3;
+  }
+
+  /* Destaque quando ativo */
+  .edgePath.active path,
+  .edgePath.active .arrowheadPath {
+    stroke-width: 3px;
+    opacity: 1;
+  }
+</style>
+
 </head>
 <body>
 
@@ -232,6 +277,30 @@ TCC2[Trabalho de Conclusão de Curso II - LOQ4048]
 
 TCC1 --> TCC2
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const nodes = document.querySelectorAll(".node");
+
+    nodes.forEach(node => {
+      node.addEventListener("mouseenter", () => {
+        const id = node.id;
+
+        document.querySelectorAll(".edgePath").forEach(edge => {
+          if (edge.innerHTML.includes(id)) {
+            edge.classList.add("active");
+          }
+        });
+      });
+
+      node.addEventListener("mouseleave", () => {
+        document.querySelectorAll(".edgePath").forEach(edge => {
+          edge.classList.remove("active");
+        });
+      });
+    });
+  });
+</script>
 
 </body>
 </html>
