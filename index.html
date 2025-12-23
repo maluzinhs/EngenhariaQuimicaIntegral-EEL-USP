@@ -11,7 +11,9 @@
     startOnLoad: true,
     theme: "dark",
     flowchart: {
-      curve: "linear"
+      curve: "linear",
+      nodeSpacing: 40,
+      rankSpacing: 120
     }
   });
 </script>
@@ -23,6 +25,11 @@
     background: #2b2b2b;
     padding: 20px;
     color: #fff;
+    .mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+
   }
 
   h1 {
@@ -104,6 +111,7 @@ graph TB
 
 %% 1º período
 subgraph P1["1º Período"]
+direction LR
 C1[Cálculo I - LOB1003]
 GA[Geometria Analítica - LOB1036]
 LIDT[Leitura e Interpretação de desenho Técnico - LOB1009]
@@ -116,6 +124,7 @@ end
   
 %% 2º período
 subgraph P2["2º Período"]
+direction LR
 C2[Cálculo II - LOB1004]
 F1[Física I - LOB1018]
 AL[Álgebra Linear - LOB1037]
@@ -132,6 +141,7 @@ GA --> AL
 
 %% 3º Período
 subgraph P3["3º Período"]
+direction LR
 Es[Estatística - LOB1012]
 F2[Física II - LOB 1019]
 MEC[Mecânica - LOB1024]
@@ -155,6 +165,7 @@ FQE2 --> QO1
 
 %% 4º Período
 subgraph P4["4º Período"]
+direction LR
 C4[Cálculo IV - LOB1006]
 FisExp3[Física Experimental III - LOB1039]
 F3[Física III - LOB1053]
@@ -179,6 +190,7 @@ BME --> TDQ1
 
 %% 5º Período
 subgraph P5["5º Período"]
+direction LR
 EA[Eletricidade Aplicada - LOB1011]
 MIQ[Materiais para a Indústria Química - LOM3022]
 IIQ[Instrumentação na Industria Química - LOQ4009]
@@ -205,6 +217,7 @@ TDQ1 --> TDQ2
 
 %%6º Período
 subgraph P6["6º Período"]
+direction LR
 AI[Análise Instrumental - LOQ4001]
 CQA[Cinética Química Aplicada - LOQ4003]
 CPQ[Controle de Processos Químicos - LOQ4004]
@@ -226,6 +239,7 @@ QO2 --> BQI
 
 %%7º Período
 subgraph P7["7º Período"]
+direction LR
 POT[Psicologia Organizacional e do Trabalho - LOB1031]
 EMA[Engenharia do Meio Ambiente - LOB1046]
 RQ[Reatores Quimicos - LOQ4002]
@@ -249,6 +263,7 @@ BQI --> EB
 
 %%8º Período
 subgraph P8["8º Período"]
+direction LR
 PIQ[Projeto na Indústria Química - LOQ4049]
 EE[Engenharia Econômica - LOQ4050]
 Pol[Polímeros - LOQ4059]
@@ -276,6 +291,7 @@ EB --> PB
 
 %%9º Período
 subgraph P9["9º Período"]
+direction LR
 TCC1[Trabalho de Conclusão de Curso I - LOQ4047]
 ES[Estágio SUpervisionado - LOQ4051]
 end
@@ -309,6 +325,7 @@ NE --> ES
 
 %%10º Período
 subgraph P10["10º Período"]
+direction LR
 TCC2[Trabalho de Conclusão de Curso II - LOQ4048]
 end
   
