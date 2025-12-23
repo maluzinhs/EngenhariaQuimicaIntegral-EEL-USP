@@ -58,11 +58,28 @@
   }
 
   /* ===== SETAS ===== */
-  .edgePath path {
-    stroke: #4da3ff !important;
-    stroke-width: 1.2px;
-    opacity: 0.3;
-  }
+ /* ===== SETAS (apagadas) ===== */
+.edgePath path {
+  stroke: #4da3ff !important;
+  stroke-width: 1.2px;
+  opacity: 0.08;
+}
+
+.arrowheadPath {
+  fill: #4da3ff !important;
+  opacity: 0.08;
+}
+
+/* ===== SETAS ATIVAS ===== */
+.edgePath.active path {
+  stroke-width: 3px;
+  opacity: 1;
+}
+
+.edgePath.active .arrowheadPath {
+  opacity: 1;
+}
+
 
   .arrowheadPath {
     fill: #4da3ff !important;
@@ -83,9 +100,10 @@
 <h1>Fluxograma – Engenharia Química (EEL-USP)</h1>
 
 <div class="mermaid">
-graph LR
+graph TB
 
 %% 1º período
+subgraph P1["1º Período"]
 C1[Cálculo I - LOB1003]
 GA[Geometria Analítica - LOB1036]
 LIDT[Leitura e Interpretação de desenho Técnico - LOB1009]
@@ -96,6 +114,7 @@ NE[Nivelamento para Engenharia - LOQ4102]
 EAC[Escrita Acadêmico Científica]
 
 %% 2º período
+subgraph P2["2º Período"]
 C2[Cálculo II - LOB1004]
 F1[Física I - LOB1018]
 AL[Álgebra Linear - LOB1037]
@@ -110,6 +129,7 @@ GA --> C2
 GA --> AL
 
 %% 3º Período
+subgraph P3["3º Período"]
 Es[Estatística - LOB1012]
 F2[Física II - LOB 1019]
 MEC[Mecânica - LOB1024]
@@ -131,6 +151,7 @@ FQ1 --> QO1
 FQ2 --> QO1
 
 %% 4º Período
+subgraph P4["4º Período"]
 C4[Cálculo IV - LOB1006]
 FisExp3[Física Experimental III - LOB1039]
 F3[Física III - LOB1053]
@@ -153,6 +174,7 @@ F2 --> TDQ1
 BME --> TDQ1
 
 %% 5º Período
+subgraph P5["5º Período"]
 EA[Eletricidade Aplicada - LOB1011]
 MIQ[Materiais para a Indústria Química - LOM3022]
 IIQ[Instrumentação na Industria Química - LOQ4009]
@@ -177,6 +199,7 @@ FT1 --> OP1
 TDQ1 --> TDQ2
 
 %%6º Período
+subgraph P6["6º Período"]
 AI[Análise Instrumental - LOQ4001]
 CQA[Cinética Química Aplicada - LOQ4003]
 CPQ[Controle de Processos Químicos - LOQ4004]
@@ -195,7 +218,8 @@ FT1 --> FT3
 FT2 --> OP2
 QO2 --> BQI 
 
-%%7º Período 
+%%7º Período
+subgraph P7["7º Período"]
 POT[Psicologia Organizacional e do Trabalho - LOB1031]
 EMA[Engenharia do Meio Ambiente - LOB1046]
 RQ[Reatores Quimicos - LOQ4002]
@@ -216,7 +240,8 @@ OP2 --> EPQ1
 Es --> EQ
 BQI --> EB
 
-%% 8º Período
+%%8º Período
+subgraph P8["8º Período"]
 PIQ[Projeto na Indústria Química - LOQ4049]
 EE[Engenharia Econômica - LOQ4050]
 Pol[Polímeros - LOQ4059]
@@ -241,7 +266,8 @@ QO2 --> PQI
 OP3 --> PQI
 EB --> PB
 
-%% 9º Período
+%%9º Período
+subgraph P9["9º Período"]
 TCC1[Trabalho de Conclusão de Curso I - LOQ4047]
 ES[Estágio SUpervisionado - LOQ4051]
 
@@ -272,35 +298,42 @@ EAC --> ES
 LIDT --> ES
 NE --> ES
 
-%% 10º Período
+%%10º Período
+subgraph P10["10º Período"]
 TCC2[Trabalho de Conclusão de Curso II - LOQ4048]
 
 TCC1 --> TCC2
 </div>
 
+</div>
+
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const nodes = document.querySelectorAll(".node");
+    const edges = document.querySelectorAll(".edgePath");
 
     nodes.forEach(node => {
       node.addEventListener("mouseenter", () => {
-        const id = node.id;
+        const nodeId = node.id;
 
-        document.querySelectorAll(".edgePath").forEach(edge => {
-          if (edge.innerHTML.includes(id)) {
+        edges.forEach(edge => {
+          const edgeId = edge.id || "";
+          if (edgeId.includes(nodeId)) {
             edge.classList.add("active");
           }
         });
       });
 
       node.addEventListener("mouseleave", () => {
-        document.querySelectorAll(".edgePath").forEach(edge => {
-          edge.classList.remove("active");
-        });
+        edges.forEach(edge => edge.classList.remove("active"));
       });
     });
   });
 </script>
+
+</body>
+</html>
+
 
 </body>
 </html>
