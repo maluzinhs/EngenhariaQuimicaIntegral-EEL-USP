@@ -112,7 +112,8 @@ QGE[Química Geral Experimental - LOQ4095]
 FQE1[Fundamentos de Química para Engenharia I-A - LOQ4097]
 NE[Nivelamento para Engenharia - LOQ4102]
 EAC[Escrita Acadêmico Científica]
-
+end
+  
 %% 2º período
 subgraph P2["2º Período"]
 C2[Cálculo II - LOB1004]
@@ -123,7 +124,8 @@ ICMAT[Introdução à Ciência dos Materiais - LOM3016]
 BME[Balanço de Massa e Energia - LOQ4053]
 FQE2[Fundamentos de Química para Engenharia II-A - LOQ4098]
 EI[Empreendedorismo e Inovação - LOQ4234]
-
+end
+  
 C1 --> C2
 GA --> C2
 GA --> AL
@@ -138,6 +140,7 @@ IMNC[Introdução aos Métodos Numéricos e Computacionais - LOB1056]
 QO1[Química Orgânica I - LOQ4037]
 QI[Quimica Inorgânica - LOQ4055]
 ES[Engenharia da Sustentabilidade - LOQ4265]
+end
 
 C2 --> ES
 C1 --> F2
@@ -147,8 +150,8 @@ F1 --> MEC
 C2 --> C3
 GA --> IMNC
 C2 --> IMNC
-FQ1 --> QO1
-FQ2 --> QO1
+FQE1 --> QO1
+FQE2 --> QO1
 
 %% 4º Período
 subgraph P4["4º Período"]
@@ -159,7 +162,8 @@ IMS[Introdução à Mecânica dos Sólidos - LOM3081]
 QO2[Química Orgânica II - LOQ4038]
 FT1[Fenômenos de Transporte I - LOQ4038]
 TDQ1[Termodinâmica Química Aplicada I - LOQ4087]
-
+end
+  
 C3 --> C4
 AL --> C4 
 FisExp1 --> FisExp3
@@ -183,7 +187,8 @@ LEQ1[Laboratório de Engenharia Química I - LOQ4060]
 FT2[Fenômenos de Transporte II - LOQ4084]
 OP1[Operações Unitárias I - LOQ4085]
 TDQ2[Termodinâmica Química Aplicada II]
-
+end
+  
 F3 --> EA
 ICMAT --> MIQ
 C4 --> IIQ
@@ -207,7 +212,8 @@ FT3[Fenômenos de Transporte III - LOQ4054]
 LEQ2[Laboratório de Engenharia Química II - LOQ4061]
 OP2[Operações Unitárias II - LOQ4086]
 BQI[Bioquímica - LOT2004]
-
+end
+  
 QEA --> AI
 TDQ2 --> CQA
 C4 --> CPQ
@@ -229,7 +235,8 @@ EPQ1[Engenharia de Processos Quimicos I - LOQ4064]
 EQ[Engenharia da Qualidade - LOQ4209]
 GN[Gestão de Negócios - LOQ4233]
 EB[Engenharia Bioquímica - LOT2041]
-
+end
+  
 QI --> EMA
 CQA --> RQ
 FT3 --> OP3
@@ -250,7 +257,8 @@ EPQ2[Engenharia de Processos Químicos 2 - LOQ4065]
 MSP[Modelagem e Simulação de Processos - LOQ4078]
 PQI[Processos Químicos Industriais - LOQ4104]
 PB[Processos Bioquímicos - LOT2042]
-
+end
+  
 OP2 --> PIQ
 RQ --> PIQ
 Es --> EE
@@ -270,7 +278,8 @@ EB --> PB
 subgraph P9["9º Período"]
 TCC1[Trabalho de Conclusão de Curso I - LOQ4047]
 ES[Estágio SUpervisionado - LOQ4051]
-
+end
+  
 PQI --> TCC1
 CQA --> TCC1
 F3 --> ES
@@ -301,10 +310,9 @@ NE --> ES
 %%10º Período
 subgraph P10["10º Período"]
 TCC2[Trabalho de Conclusão de Curso II - LOQ4048]
-
+end
+  
 TCC1 --> TCC2
-</div>
-
 </div>
 
 <script>
