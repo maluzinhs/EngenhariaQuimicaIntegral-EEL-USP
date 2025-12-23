@@ -101,43 +101,79 @@ line.active {
   </svg>
 
   <!-- 1º PERÍODO -->
-  <div class="periodo">
-    <h2>1º Período</h2>
-    <div class="materias">
-      <div class="materia" id="C1">Cálculo I</div>
-      <div class="materia" id="GA">Geometria Analítica</div>
-      <div class="materia" id="FQE1">Fund. Química Eng. I</div>
-    </div>
+ <div class="periodo">
+  <h2>1º Período</h2>
+  <div class="materias">
+    <div class="materia" id="C1">Cálculo I</div>
+    <div class="materia" id="GA">Geometria Analítica</div>
+    <div class="materia" id="LIDT">Leitura e Interpretação de Desenho Técnico</div>
+    <div class="materia" id="IEQ">Introdução à Engenharia Química</div>
+    <div class="materia" id="QGE">Química Geral Experimental</div>
+    <div class="materia" id="FQE1">Fundamentos de Química para Engenharia I-A</div>
+    <div class="materia" id="NE">Nivelamento para Engenharia</div>
+    <div class="materia" id="EAC">Escrita Acadêmico-Científica</div>
   </div>
+</div>
 
   <!-- 2º PERÍODO -->
-  <div class="periodo">
-    <h2>2º Período</h2>
-    <div class="materias">
-      <div class="materia" id="C2">Cálculo II</div>
-      <div class="materia" id="AL">Álgebra Linear</div>
-      <div class="materia" id="QGE">Química Geral Exp.</div>
-    </div>
+<div class="periodo">
+  <h2>2º Período</h2>
+  <div class="materias">
+    <div class="materia" id="C2">Cálculo II</div>
+    <div class="materia" id="F1">Física I</div>
+    <div class="materia" id="AL">Álgebra Linear</div>
+    <div class="materia" id="FisExp1">Física Experimental I</div>
+    <div class="materia" id="ICMAT">Introdução à Ciência dos Materiais</div>
+    <div class="materia" id="BME">Balanço de Massa e Energia</div>
+    <div class="materia" id="FQE2">Fundamentos de Química para Engenharia II-A</div>
+    <div class="materia" id="EI">Empreendedorismo e Inovação</div>
   </div>
+</div>
 
   <!-- 3º PERÍODO -->
-  <div class="periodo">
-    <h2>3º Período</h2>
-    <div class="materias">
-      <div class="materia" id="QO1">Química Orgânica I</div>
-    </div>
+ <div class="periodo">
+  <h2>3º Período</h2>
+  <div class="materias">
+    <div class="materia" id="Es">Estatística</div>
+    <div class="materia" id="F2">Física II</div>
+    <div class="materia" id="MEC">Mecânica</div>
+    <div class="materia" id="C3">Cálculo III</div>
+    <div class="materia" id="IMNC">Introdução aos Métodos Numéricos e Computacionais</div>
+    <div class="materia" id="QO1">Química Orgânica I</div>
+    <div class="materia" id="QI">Química Inorgânica</div>
+    <div class="materia" id="ES">Engenharia da Sustentabilidade</div>
   </div>
+</div>
+
+  <!-- 4º PERÍODO -->  
 
 </div>
 
 <script>
 /* ===== CONEXÕES ===== */
 const conexoes = [
+  // 1º → 2º
   ["C1", "C2"],
+  ["GA", "C2"],
   ["GA", "AL"],
-  ["FQE1", "QGE"],
-  ["QGE", "QO1"]
+
+  // 1º → 3º
+  ["C1", "F2"],
+
+  // 2º → 3º
+  ["F1", "F2"],
+  ["GA", "MEC"],
+  ["F1", "MEC"],
+  ["C2", "C3"],
+  ["GA", "IMNC"],
+  ["C2", "IMNC"],
+  ["FQE1", "QO1"],
+  ["FQE2", "QO1"],
+
+  // Sustentabilidade
+  ["C2", "ES"]
 ];
+
 
 const svg = document.getElementById("arrows");
 const linhas = [];
