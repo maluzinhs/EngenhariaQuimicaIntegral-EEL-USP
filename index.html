@@ -1,364 +1,189 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Fluxograma – Engenharia Química (EEL-USP)</title>
+<meta charset="UTF-8" />
+<title>Fluxograma – Engenharia Química (EEL-USP)</title>
 
-  <!-- Mermaid -->
-  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-<script>
-  mermaid.initialize({
-    startOnLoad: true,
-    theme: "dark",
-    flowchart: {
-      curve: "linear",
-      nodeSpacing: 40,
-      rankSpacing: 120
-    }
-  });
-</script>
-
-
- <style>
-  body {
-    font-family: Arial, sans-serif;
-    background: #2b2b2b;
-    padding: 20px;
-    color: #fff;
-    .mermaid svg {
-  max-width: 100%;
-  height: auto;
+<style>
+/* ===== GERAL ===== */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #2b2b2b;
+  color: #fff;
 }
 
-  }
+h1 {
+  text-align: center;
+  color: #4da3ff;
+  margin: 20px 0;
+}
 
-  h1 {
-    text-align: center;
-    color: #4da3ff;
-  }
+/* ===== GRID DOS PERÍODOS ===== */
+#grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: auto;
+  gap: 60px 40px;
+  padding: 40px;
+}
 
-  .mermaid {
-    background: #2b2b2b;
-    padding: 20px;
-    overflow-x: auto;
-  }
+/* ===== PERÍODO ===== */
+.periodo {
+  grid-column: 1 / -1;
+}
 
-  /* ===== NÓS (matérias) ===== */
-  .node rect {
-    fill: #000 !important;
-    stroke: #4da3ff !important;
-    stroke-width: 1.5px;
-    rx: 6;
-    ry: 6;
-  }
+.periodo h2 {
+  color: #4da3ff;
+  margin-bottom: 15px;
+}
 
-  .node text {
-    fill: #ffffff !important;
-    font-size: 13px;
-  }
+/* ===== MATÉRIAS ===== */
+.materias {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+}
 
-  /* Hover no card */
-  .node:hover rect {
-    stroke-width: 3px;
-    filter: drop-shadow(0 0 8px #4da3ff);
-    cursor: pointer;
-  }
+.materia {
+  background: #000;
+  border: 2px solid #4da3ff;
+  border-radius: 6px;
+  padding: 12px;
+  text-align: center;
+  font-size: 13px;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+}
 
-  /* ===== SETAS ===== */
- /* ===== SETAS (apagadas) ===== */
-.edgePath path {
-  stroke: #4da3ff !important;
-  stroke-width: 1.2px;
+.materia:hover {
+  box-shadow: 0 0 12px #4da3ff;
+}
+
+/* ===== SVG DAS SETAS ===== */
+svg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+line {
+  stroke: #4da3ff;
+  stroke-width: 2;
   opacity: 0.08;
+  marker-end: url(#arrow);
+  transition: opacity 0.2s, stroke-width 0.2s;
 }
 
-.arrowheadPath {
-  fill: #4da3ff !important;
-  opacity: 0.08;
-}
-
-/* ===== SETAS ATIVAS ===== */
-.edgePath.active path {
-  stroke-width: 3px;
+line.active {
   opacity: 1;
+  stroke-width: 4;
 }
-
-.edgePath.active .arrowheadPath {
-  opacity: 1;
-}
-
-
-  .arrowheadPath {
-    fill: #4da3ff !important;
-    opacity: 0.3;
-  }
-
-  /* Destaque quando ativo */
-  .edgePath.active path,
-  .edgePath.active .arrowheadPath {
-    stroke-width: 3px;
-    opacity: 1;
-  }
 </style>
-
 </head>
+
 <body>
 
 <h1>Fluxograma – Engenharia Química (EEL-USP)</h1>
 
-<div class="mermaid">
-graph TB
+<div id="grid">
 
-%% 1º período
-subgraph P1["1º Período"]
-direction LR
-C1[Cálculo I - LOB1003]
-GA[Geometria Analítica - LOB1036]
-LIDT[Leitura e Interpretação de desenho Técnico - LOB1009]
-IEQ[Introdução à Engenharia Química - LOQ4010]
-QGE[Química Geral Experimental - LOQ4095]
-FQE1[Fundamentos de Química para Engenharia I-A - LOQ4097]
-NE[Nivelamento para Engenharia - LOQ4102]
-EAC[Escrita Acadêmico Científica]
-end
-  
-%% 2º período
-subgraph P2["2º Período"]
-direction LR
-C2[Cálculo II - LOB1004]
-F1[Física I - LOB1018]
-AL[Álgebra Linear - LOB1037]
-FisExp1[Física Experimental I - LOB1038]
-ICMAT[Introdução à Ciência dos Materiais - LOM3016]
-BME[Balanço de Massa e Energia - LOQ4053]
-FQE2[Fundamentos de Química para Engenharia II-A - LOQ4098]
-EI[Empreendedorismo e Inovação - LOQ4234]
-end
-  
-C1 --> C2
-GA --> C2
-GA --> AL
+  <!-- SVG DAS SETAS -->
+  <svg id="arrows">
+    <defs>
+      <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L9,3 z" fill="#4da3ff" />
+      </marker>
+    </defs>
+  </svg>
 
-%% 3º Período
-subgraph P3["3º Período"]
-direction LR
-Es[Estatística - LOB1012]
-F2[Física II - LOB 1019]
-MEC[Mecânica - LOB1024]
-C3[Cálculo III - LOB1052]
-IMNC[Introdução aos Métodos Numéricos e Computacionais - LOB1056]
-QO1[Química Orgânica I - LOQ4037]
-QI[Quimica Inorgânica - LOQ4055]
-ES[Engenharia da Sustentabilidade - LOQ4265]
-end
+  <!-- 1º PERÍODO -->
+  <div class="periodo">
+    <h2>1º Período</h2>
+    <div class="materias">
+      <div class="materia" id="C1">Cálculo I</div>
+      <div class="materia" id="GA">Geometria Analítica</div>
+      <div class="materia" id="FQE1">Fund. Química Eng. I</div>
+    </div>
+  </div>
 
-C2 --> ES
-C1 --> F2
-F1 --> F2
-GA --> MEC 
-F1 --> MEC
-C2 --> C3
-GA --> IMNC
-C2 --> IMNC
-FQE1 --> QO1
-FQE2 --> QO1
+  <!-- 2º PERÍODO -->
+  <div class="periodo">
+    <h2>2º Período</h2>
+    <div class="materias">
+      <div class="materia" id="C2">Cálculo II</div>
+      <div class="materia" id="AL">Álgebra Linear</div>
+      <div class="materia" id="QGE">Química Geral Exp.</div>
+    </div>
+  </div>
 
-%% 4º Período
-subgraph P4["4º Período"]
-direction LR
-C4[Cálculo IV - LOB1006]
-FisExp3[Física Experimental III - LOB1039]
-F3[Física III - LOB1053]
-IMS[Introdução à Mecânica dos Sólidos - LOM3081]
-QO2[Química Orgânica II - LOQ4038]
-FT1[Fenômenos de Transporte I - LOQ4038]
-TDQ1[Termodinâmica Química Aplicada I - LOQ4087]
-end
-  
-C3 --> C4
-AL --> C4 
-FisExp1 --> FisExp3
-C2 --> F3
-F2 --> F3
-MEC --> IMS
-QO1 --> QO2
-MEC --> FT1
-C3 --> FT1 
-C2 --> TDQ1
-F2 --> TDQ1
-BME --> TDQ1
+  <!-- 3º PERÍODO -->
+  <div class="periodo">
+    <h2>3º Período</h2>
+    <div class="materias">
+      <div class="materia" id="QO1">Química Orgânica I</div>
+    </div>
+  </div>
 
-%% 5º Período
-subgraph P5["5º Período"]
-direction LR
-EA[Eletricidade Aplicada - LOB1011]
-MIQ[Materiais para a Indústria Química - LOM3022]
-IIQ[Instrumentação na Industria Química - LOQ4009]
-QEA[Química Analítica para Engenharia - LOQ4056]
-LEQ1[Laboratório de Engenharia Química I - LOQ4060]
-FT2[Fenômenos de Transporte II - LOQ4084]
-OP1[Operações Unitárias I - LOQ4085]
-TDQ2[Termodinâmica Química Aplicada II]
-end
-  
-F3 --> EA
-ICMAT --> MIQ
-C4 --> IIQ
-FT1 --> IIQ
-Es --> QEA
-FQE2 --> QEA
-QGE --> QEA
-FT1 --> LEQ1 
-C4 --> FT2
-F2 --> FT2
-FT1 --> FT2
-FT1 --> OP1
-TDQ1 --> TDQ2
-
-%%6º Período
-subgraph P6["6º Período"]
-direction LR
-AI[Análise Instrumental - LOQ4001]
-CQA[Cinética Química Aplicada - LOQ4003]
-CPQ[Controle de Processos Químicos - LOQ4004]
-FT3[Fenômenos de Transporte III - LOQ4054]
-LEQ2[Laboratório de Engenharia Química II - LOQ4061]
-OP2[Operações Unitárias II - LOQ4086]
-BQI[Bioquímica - LOT2004]
-end
-  
-QEA --> AI
-TDQ2 --> CQA
-C4 --> CPQ
-IIQ --> CPQ
-IMNC --> CPQ
-FT2 --> FT3
-FT1 --> FT3 
-FT2 --> OP2
-QO2 --> BQI 
-
-%%7º Período
-subgraph P7["7º Período"]
-direction LR
-POT[Psicologia Organizacional e do Trabalho - LOB1031]
-EMA[Engenharia do Meio Ambiente - LOB1046]
-RQ[Reatores Quimicos - LOQ4002]
-OP3[Operações Unitárias III - LOQ4057]
-LEQ3[Laboratório de Engenharia Química III - LOQ4062]
-EPQ1[Engenharia de Processos Quimicos I - LOQ4064]
-EQ[Engenharia da Qualidade - LOQ4209]
-GN[Gestão de Negócios - LOQ4233]
-EB[Engenharia Bioquímica - LOT2041]
-end
-  
-QI --> EMA
-CQA --> RQ
-FT3 --> OP3
-OP1 --> LEQ3
-OP2 --> LEQ3
-FT3 --> EPQ1
-OP2 --> EPQ1
-Es --> EQ
-BQI --> EB
-
-%%8º Período
-subgraph P8["8º Período"]
-direction LR
-PIQ[Projeto na Indústria Química - LOQ4049]
-EE[Engenharia Econômica - LOQ4050]
-Pol[Polímeros - LOQ4059]
-LEQ4[Laboratório de Engenharia Química 4 - LOQ4063]
-EPQ2[Engenharia de Processos Químicos 2 - LOQ4065]
-MSP[Modelagem e Simulação de Processos - LOQ4078]
-PQI[Processos Químicos Industriais - LOQ4104]
-PB[Processos Bioquímicos - LOT2042]
-end
-  
-OP2 --> PIQ
-RQ --> PIQ
-Es --> EE
-QO2 --> Pol
-RQ --> LEQ4
-CPQ --> LEQ4
-EPQ1 --> EPQ2
-OP3 --> MSP
-RQ --> MSP
-IMNC --> MSP
-QI --> PQI
-QO2 --> PQI
-OP3 --> PQI
-EB --> PB
-
-%%9º Período
-subgraph P9["9º Período"]
-direction LR
-TCC1[Trabalho de Conclusão de Curso I - LOQ4047]
-ES[Estágio SUpervisionado - LOQ4051]
-end
-  
-PQI --> TCC1
-CQA --> TCC1
-F3 --> ES
-QGE --> ES
-IMNC --> ES
-GA --> ES
-MEC --> ES
-IEQ --> ES
-C2 --> ES
-EA --> ES
-C3 --> ES
-Es --> ES
-C4 --> ES
-FisExp3 --> ES
-FQE2 --> ES
-F2 --> ES
-FQE1 --> ES
-ICMAT --> ES
-C1 --> ES
-FisExp1 --> ES
-F1 --> ES
-AL --> ES
-IMS --> ES
-EAC --> ES
-LIDT --> ES
-NE --> ES
-
-%%10º Período
-subgraph P10["10º Período"]
-direction LR
-TCC2[Trabalho de Conclusão de Curso II - LOQ4048]
-end
-  
-TCC1 --> TCC2
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const nodes = document.querySelectorAll(".node");
-    const edges = document.querySelectorAll(".edgePath");
+/* ===== CONEXÕES ===== */
+const conexoes = [
+  ["C1", "C2"],
+  ["GA", "AL"],
+  ["FQE1", "QGE"],
+  ["QGE", "QO1"]
+];
 
-    nodes.forEach(node => {
-      node.addEventListener("mouseenter", () => {
-        const nodeId = node.id;
+const svg = document.getElementById("arrows");
+const linhas = [];
 
-        edges.forEach(edge => {
-          const edgeId = edge.id || "";
-          if (edgeId.includes(nodeId)) {
-            edge.classList.add("active");
-          }
-        });
-      });
+function desenhar() {
+  svg.innerHTML = svg.innerHTML; // limpa linhas
+  linhas.length = 0;
 
-      node.addEventListener("mouseleave", () => {
-        edges.forEach(edge => edge.classList.remove("active"));
-      });
+  conexoes.forEach(([from, to]) => {
+    const a = document.getElementById(from).getBoundingClientRect();
+    const b = document.getElementById(to).getBoundingClientRect();
+    const g = document.getElementById("grid").getBoundingClientRect();
+
+    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+
+    line.setAttribute("x1", a.left + a.width / 2 - g.left);
+    line.setAttribute("y1", a.top + a.height - g.top);
+    line.setAttribute("x2", b.left + b.width / 2 - g.left);
+    line.setAttribute("y2", b.top - g.top);
+
+    line.dataset.from = from;
+    line.dataset.to = to;
+
+    svg.appendChild(line);
+    linhas.push(line);
+  });
+}
+
+window.addEventListener("load", desenhar);
+window.addEventListener("resize", desenhar);
+
+/* ===== HOVER ===== */
+document.querySelectorAll(".materia").forEach(m => {
+  m.addEventListener("mouseenter", () => {
+    linhas.forEach(l => {
+      if (l.dataset.from === m.id || l.dataset.to === m.id) {
+        l.classList.add("active");
+      }
     });
   });
+
+  m.addEventListener("mouseleave", () => {
+    linhas.forEach(l => l.classList.remove("active"));
+  });
+});
 </script>
-
-</body>
-</html>
-
 
 </body>
 </html>
