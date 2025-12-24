@@ -11,11 +11,6 @@ body {
   color: white;
   font-family: Arial, sans-serif;
 }
-  .materia.dim {
-  opacity: 0.15;
-  filter: grayscale(80%);
-}
-
 
 h1 {
   text-align: center;
@@ -70,21 +65,16 @@ line.active {
 
 <body>
 
-<h1>1º Período – Engenharia Química (EEL-USP)</h1>
-
-<div id="container">
-  <svg id="arrows"></svg>
-
-  <div class="materias">
-    <div class="materia" id="C1">Cálculo I</div>
-    <div class="materia" id="GA">Geometria Analítica</div>
-    <div class="materia" id="LIDT">Leitura e Interpretação de Desenho Técnico</div>
-    <div class="materia" id="IEQ">Introdução à Engenharia Química</div>
-    <div class="materia" id="QGE">Química Geral Experimental</div>
-    <div class="materia" id="FQE1">Fundamentos de Química para Engenharia I</div>
-    <div class="materia" id="NE">Nivelamento para Engenharia</div>
-    <div class="materia" id="EAC">Escrita Acadêmico-Científica</div>
-  </div>
+<h1>1º Período</h1>
+<div class="materias">
+  <div class="materia" id="C1">Cálculo I</div>
+  <div class="materia" id="GA">Geometria Analítica</div>
+  <div class="materia" id="LIDT">Leitura e Interpretação de Desenho Técnico</div>
+  <div class="materia" id="IEQ">Introdução à Engenharia Química</div>
+  <div class="materia" id="QGE">Química Geral Experimental</div>
+  <div class="materia" id="FQE1">Fundamentos de Química para Engenharia I</div>
+  <div class="materia" id="NE">Nivelamento para Engenharia</div>
+  <div class="materia" id="EAC">Escrita Acadêmico-Científica</div>
 
   <h2>2º Período</h2>
 <div class="materias">
@@ -133,7 +123,7 @@ line.active {
   <div class="materia" id="TDQ2">Termodinâmica Química Aplicada II</div>
 </div>
 
-<h6>6º Período</h6>
+ <h6>6º Período</h6>
 <div class="materias">
   <div class="materia" id="AI">Análise Instrumental</div>
   <div class="materia" id="CQA">Cinética Química Aplicada</div>
@@ -157,7 +147,7 @@ line.active {
   <div class="materia" id="EB">Engenharia Bioquímica</div>
 </div>
 
- <h8>8º Período</h8>
+  <h8>8º Período</h8>
 <div class="materias">
   <div class="materia" id="PIQ">Projeto na Indústria Química</div>
   <div class="materia" id="EE">Engenharia Econômica</div>
@@ -169,16 +159,19 @@ line.active {
   <div class="materia" id="PB">Processos Bioquímicos</div>
 </div>
 
-<h9>9º Período</h9>
+  <h9>9º Período</h9>
 <div class="materias">
   <div class="materia" id="TCC1">Trabalho de Conclusão de Curso I</div>
   <div class="materia" id="ESUP">Estágio Supervisionado</div>
 </div>
 
-<h10>10º Período</h10>
+  <h10>10º Período</h10>
 <div class="materias">
   <div class="materia" id="TCC2">Trabalho de Conclusão de Curso II</div>
-</div>  
+</div>
+
+</div>
+
 </div>
 
 <script>
@@ -318,51 +311,18 @@ document.querySelectorAll(".materia").forEach(m => {
   m.addEventListener("click", () => {
     if (fixado === m.id) {
       fixado = null;
-      limparTudo();
+      linhas.forEach(l => l.classList.remove("active"));
     } else {
       fixado = m.id;
-      destacarTudo(m.id);
+      linhas.forEach(l =>
+        l.classList.toggle(
+          "active",
+          l.dataset.from === m.id || l.dataset.to === m.id
+        )
+      );
     }
   });
 });
- function destacarTudo(id) {
-  const relacionadas = new Set();
-
-  // 1) acha todas as conexões diretas
-  linhas.forEach(l => {
-    if (l.dataset.from === id || l.dataset.to === id) {
-      l.classList.add("active");
-      relacionadas.add(l.dataset.from);
-      relacionadas.add(l.dataset.to);
-    } else {
-      l.classList.remove("active");
-    }
-  });
-
-  // 2) garante que a clicada sempre fique ativa
-  relacionadas.add(id);
-
-  // 3) apaga todo o resto
-  document.querySelectorAll(".materia").forEach(m => {
-    if (relacionadas.has(m.id)) {
-      m.classList.remove("dim");
-    } else {
-      m.classList.add("dim");
-    }
-  });
-
-  // apaga matérias não relacionadas
-  document.querySelectorAll(".materia").forEach(m => {
-    m.classList.toggle("dim", !relacionadas.has(m.id));
-  });
-}
-
-function limparTudo() {
-  linhas.forEach(l => l.classList.remove("active"));
-  document.querySelectorAll(".materia").forEach(m =>
-    m.classList.remove("dim")
-  );
-}
 
 window.addEventListener("load", desenharSetas);
 window.addEventListener("resize", desenharSetas);
