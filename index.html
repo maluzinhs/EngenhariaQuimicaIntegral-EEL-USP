@@ -325,10 +325,10 @@ document.querySelectorAll(".materia").forEach(m => {
     }
   });
 });
- function destacarTudo(id) {
+  
+function destacarTudo(id) {
   const relacionadas = new Set();
 
-  // 1) acha todas as conexões diretas
   linhas.forEach(l => {
     if (l.dataset.from === id || l.dataset.to === id) {
       l.classList.add("active");
@@ -339,19 +339,8 @@ document.querySelectorAll(".materia").forEach(m => {
     }
   });
 
-  // 2) garante que a clicada sempre fique ativa
   relacionadas.add(id);
 
-  // 3) apaga todo o resto
-  document.querySelectorAll(".materia").forEach(m => {
-    if (relacionadas.has(m.id)) {
-      m.classList.remove("dim");
-    } else {
-      m.classList.add("dim");
-    }
-  });
-
-  // apaga matérias não relacionadas
   document.querySelectorAll(".materia").forEach(m => {
     m.classList.toggle("dim", !relacionadas.has(m.id));
   });
@@ -363,6 +352,15 @@ function limparTudo() {
     m.classList.remove("dim")
   );
 }
+
+  relacionadas.add(id);
+  document.querySelectorAll(".materia").forEach(m => {
+    if (relacionadas.has(m.id)) {
+      m.classList.remove("dim");
+    } else {
+      m.classList.add("dim");
+    }
+  });
 
 window.addEventListener("load", desenharSetas);
 window.addEventListener("resize", desenharSetas);
