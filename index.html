@@ -26,8 +26,9 @@ h2 {
 /* ===== MATÉRIAS ===== */
 .materias {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 30px;
+  margin-bottom: 50px;
 }
 
 .materia {
@@ -65,8 +66,13 @@ line.active {
 
 <body>
 
-<h1>1º Período</h1>
-<div class="materia">
+<h1>Fluxograma – Engenharia Química (EEL-USP)</h1>
+
+<div id="container">
+  <svg id="arrows"></svg>
+  
+<h2>1º Período</h2>
+<div class="materias">
   <div class="materia" id="C1">Cálculo I</div>
   <div class="materia" id="GA">Geometria Analítica</div>
   <div class="materia" id="LIDT">Leitura e Interpretação de Desenho Técnico</div>
@@ -77,7 +83,7 @@ line.active {
   <div class="materia" id="EAC">Escrita Acadêmico-Científica</div>
 
   <h2>2º Período</h2>
-<div class="materia">
+<div class="materias">
   <div class="materia" id="C2">Cálculo II</div>
   <div class="materia" id="F1">Física I</div>
   <div class="materia" id="AL">Álgebra Linear</div>
@@ -89,7 +95,7 @@ line.active {
 </div>
 
 <h2>3º Período</h2>
-<div class="materia">
+<div class="materias">
   <div class="materia" id="Es">Estatística</div>
   <div class="materia" id="F2">Física II</div>
   <div class="materia" id="MEC">Mecânica</div>
@@ -112,7 +118,7 @@ line.active {
 </div>
 
 <h2>5º Período</h2>
-<div class="materia">
+<div class="materias">
   <div class="materia" id="EA">Eletricidade Aplicada</div>
   <div class="materia" id="MIQ">Materiais para a Indústria Química</div>
   <div class="materia" id="IIQ">Instrumentação na Indústria Química</div>
@@ -124,7 +130,7 @@ line.active {
 </div>
 
  <h2>6º Período</h2>
-<div class="materia">
+<div class="materias">
   <div class="materia" id="AI">Análise Instrumental</div>
   <div class="materia" id="CQA">Cinética Química Aplicada</div>
   <div class="materia" id="CPQ">Controle de Processos Químicos</div>
@@ -135,7 +141,7 @@ line.active {
 </div>
 
 <h2>7º Período</h2>
-<div class="materia">
+<div class="materias">
   <div class="materia" id="POT">Psicologia Organizacional e do Trabalho</div>
   <div class="materia" id="EMA">Engenharia do Meio Ambiente</div>
   <div class="materia" id="RQ">Reatores Químicos</div>
@@ -148,7 +154,7 @@ line.active {
 </div>
 
   <h2>8º Período</h2>
-<div class="materia">
+<div class="materias">
   <div class="materia" id="PIQ">Projeto na Indústria Química</div>
   <div class="materia" id="EE">Engenharia Econômica</div>
   <div class="materia" id="Pol">Polímeros</div>
@@ -160,13 +166,13 @@ line.active {
 </div>
 
   <h2>9º Período</h2>
-<div class="materia">
+<div class="materias">
   <div class="materia" id="TCC1">Trabalho de Conclusão de Curso I</div>
   <div class="materia" id="ESUP">Estágio Supervisionado</div>
 </div>
 
   <h2>10º Período</h2>
-<div class="materia">
+<div class="materias">
   <div class="materia" id="TCC2">Trabalho de Conclusão de Curso II</div>
 </div>
 
