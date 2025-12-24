@@ -45,11 +45,14 @@ h1 {
   z-index: 2;
 }
 
-svg {
+#arrows {
   position: absolute;
-  inset: 0;
-  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
+  z-index: 1;
 }
 
 line {
@@ -69,6 +72,7 @@ line.active {
 <body>
 
 <h1>Fluxograma – Engenharia Química (EEL-USP)</h1>
+<div id="grid">
 
 <!-- 1º -->
 <div class="periodo">
@@ -123,37 +127,54 @@ line.active {
   </div>
 </div>
 
-
 <script>
 const conexoes = [
-  ["C1","GA"],
-  ["GA","QGE"]
+  ["C1","C2"],["GA","AL"],["GA","C2"],
+  ["C2","C3"],["C3","C4"],
+  ["F1","F2"],["F2","F3"],
+  ["FQE1","FQE2"],["FQE2","QO1"],["QO1","QO2"]
 ];
 
-const container = document.querySelector(".materias");
-const svg = container.querySelector("svg");
+const svg = document.getElementById("arrows");
+const grid = document.getElementById("grid");
 let linhas = [];
+let fixado = null;
 
-function desenhar() {
-  svg.innerHTML = "";
-  linhas = [];
+function desenharSetas() {
+  const rect = grid.getBoundingClientRect();
 
-  const rect = container.getBoundingClientRect();
   svg.setAttribute("width", rect.width);
   svg.setAttribute("height", rect.height);
+  svg.style.top = rect.top + window.scrollY + "px";
 
-  conexoes.forEach(([a,b]) => {
-    const A = document.getElementById(a).getBoundingClientRect();
-    const B = document.getElementById(b).getBoundingClientRect();
+  svg.innerHTML = `
+    <defs>
+      <marker id="arrow" markerWidth="10" markerHeight="10"
+        refX="8" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L9,3 z" fill="#4da3ff"/>
+      </marker>
+    </defs>
+  `;
+
+  linhas = [];
+
+  conexoes.forEach(([from, to]) => {
+    const A = document.getElementById(from);
+    const B = document.getElementById(to);
+    if (!A || !B) return;
+
+    const ra = A.getBoundingClientRect();
+    const rb = B.getBoundingClientRect();
 
     const line = document.createElementNS("http://www.w3.org/2000/svg","line");
-    line.setAttribute("x1", A.left + A.width/2 - rect.left);
-    line.setAttribute("y1", A.bottom - rect.top);
-    line.setAttribute("x2", B.left + B.width/2 - rect.left);
-    line.setAttribute("y2", B.top - rect.top);
+    line.setAttribute("x1", ra.left + ra.width/2);
+    line.setAttribute("y1", ra.bottom + window.scrollY);
+    line.setAttribute("x2", rb.left + rb.width/2);
+    line.setAttribute("y2", rb.top + window.scrollY);
+    line.setAttribute("marker-end","url(#arrow)");
 
-    line.dataset.a = a;
-    line.dataset.b = b;
+    line.dataset.a = from;
+    line.dataset.b = to;
 
     svg.appendChild(line);
     linhas.push(line);
@@ -161,76 +182,25 @@ function desenhar() {
 }
 
 document.querySelectorAll(".materia").forEach(m => {
-  m.onclick = () => {
-    linhas.forEach(l => {
-      l.classList.toggle("active",
-        l.dataset.a === m.id || l.dataset.b === m.id
-      );
-    });
-  };
-});
-
-window.onload = desenhar;
-window.onresize = desenhar;
-<script>
-const conexoes = [
-  ["C1","C2"],["GA","AL"],["GA","C2"],
-  ["C2","C3"],["C3","C4"],
-  ["F1","F2"],["F2","F3"],
-  ["FQE1","FQE2"],["FQE2","QO1"],["QO1","QO2"],
-  ["FT1","OP1"]
-];
-
-document.querySelectorAll(".materias").forEach(container => {
-  const svg = container.querySelector("svg");
-  const materias = container.querySelectorAll(".materia");
-  let linhas = [];
-  let fixado = null;
-
-  function desenhar() {
-    svg.innerHTML = "";
-    linhas = [];
-
-    const r = container.getBoundingClientRect();
-    svg.setAttribute("width", r.width);
-    svg.setAttribute("height", r.height);
-
-    conexoes.forEach(([a,b]) => {
-      const A = document.getElementById(a);
-      const B = document.getElementById(b);
-      if (!A || !B) return;
-      if (!container.contains(A) && !container.contains(B)) return;
-
-      const ra = A.getBoundingClientRect();
-      const rb = B.getBoundingClientRect();
-
-      const line = document.createElementNS("http://www.w3.org/2000/svg","line");
-      line.setAttribute("x1", ra.left + ra.width/2 - r.left);
-      line.setAttribute("y1", ra.bottom - r.top);
-      line.setAttribute("x2", rb.left + rb.width/2 - r.left);
-      line.setAttribute("y2", rb.top - r.top);
-
-      line.dataset.a = a;
-      line.dataset.b = b;
-
-      svg.appendChild(line);
-      linhas.push(line);
-    });
-  }
-
-  materias.forEach(m => {
-    m.onclick = () => {
+  m.addEventListener("click", () => {
+    if (fixado === m.id) {
+      fixado = null;
+      linhas.forEach(l => l.classList.remove("active"));
+    } else {
+      fixado = m.id;
       linhas.forEach(l =>
-        l.classList.toggle("active",
+        l.classList.toggle(
+          "active",
           l.dataset.a === m.id || l.dataset.b === m.id
         )
       );
-    };
+    }
   });
-
-  window.addEventListener("load", desenhar);
-  window.addEventListener("resize", desenhar);
 });
+
+window.addEventListener("load", desenharSetas);
+window.addEventListener("resize", desenharSetas);
+window.addEventListener("scroll", desenharSetas);
 </script>
 
 </body>
