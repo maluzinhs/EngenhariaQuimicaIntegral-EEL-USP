@@ -11,6 +11,11 @@ body {
   color: white;
   font-family: Arial, sans-serif;
 }
+  .materia.dim {
+  opacity: 0.15;
+  filter: grayscale(80%);
+}
+
 
 h1 {
   text-align: center;
@@ -320,17 +325,29 @@ document.querySelectorAll(".materia").forEach(m => {
     }
   });
 });
-  function destacarTudo(id) {
-  const relacionadas = new Set([id]);
+ function destacarTudo(id) {
+  const relacionadas = new Set();
 
-  // destaca setas e descobre matérias conectadas
+  // 1) acha todas as conexões diretas
   linhas.forEach(l => {
-    const ativa = l.dataset.from === id || l.dataset.to === id;
-    l.classList.toggle("active", ativa);
-
-    if (ativa) {
+    if (l.dataset.from === id || l.dataset.to === id) {
+      l.classList.add("active");
       relacionadas.add(l.dataset.from);
       relacionadas.add(l.dataset.to);
+    } else {
+      l.classList.remove("active");
+    }
+  });
+
+  // 2) garante que a clicada sempre fique ativa
+  relacionadas.add(id);
+
+  // 3) apaga todo o resto
+  document.querySelectorAll(".materia").forEach(m => {
+    if (relacionadas.has(m.id)) {
+      m.classList.remove("dim");
+    } else {
+      m.classList.add("dim");
     }
   });
 
