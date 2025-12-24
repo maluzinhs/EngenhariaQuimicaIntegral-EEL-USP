@@ -28,13 +28,7 @@
   pointer-events: none;
   z-index: 1;
 }
-.materia {
-  transition: opacity 0.25s ease, filter 0.25s ease, box-shadow 0.25s ease;
-}
 
-line {
-  transition: opacity 0.25s ease, stroke-width 0.25s ease;
-}
 }
 
 h2 {
@@ -363,53 +357,37 @@ function desenharSetas() {
 }
 
 /* ===== CLIQUE FIXA / DESFIXA ===== */
-function aplicarDestaque(id) {
-  const relacionadas = new Set([id]);
-
-  linhas.forEach(l => {
-    const ativa = l.dataset.from === id || l.dataset.to === id;
-    l.classList.toggle("active", ativa);
-
-    if (ativa) {
-      relacionadas.add(l.dataset.from);
-      relacionadas.add(l.dataset.to);
-    }
-  });
-
-  document.querySelectorAll(".materia").forEach(x => {
-    x.classList.toggle("dim", !relacionadas.has(x.id));
-  });
-}
-
-function limparDestaque() {
-  linhas.forEach(l => l.classList.remove("active"));
-  document
-    .querySelectorAll(".materia")
-    .forEach(x => x.classList.remove("dim"));
-}
-
 function ativarInteracao() {
   document.querySelectorAll(".materia").forEach(m => {
+    m.onclick = () => {
 
-    // HOVER (temporário)
-    m.addEventListener("mouseenter", () => {
-      if (!fixado) aplicarDestaque(m.id);
-    });
-
-    m.addEventListener("mouseleave", () => {
-      if (!fixado) limparDestaque();
-    });
-
-    // CLIQUE (fixa)
-    m.addEventListener("click", () => {
+      // RESET
       if (fixado === m.id) {
         fixado = null;
-        limparDestaque();
-      } else {
-        fixado = m.id;
-        aplicarDestaque(m.id);
+
+        linhas.forEach(l => l.classList.remove("active"));
+        document
+          .querySelectorAll(".materia")
+          .forEach(x => x.classList.remove("dim"));
+
+        return;
       }
-    });
+
+      // FIXA NOVA
+      fixado = m.id;
+
+      const relacionadas = new Set([m.id]);
+
+      linhas.forEach(l => {
+        const ativa = l.dataset.from === m.id || l.dataset.to === m.id;
+
+        l.classList.toggle("active", ativa);
+
+        if (ativa) {
+          relacionadas.add(l.dataset.from);
+          relacionadas.add(l.dataset.to);
+        }
+      });
 
       document.querySelectorAll(".materia").forEach(x => {
         x.classList.toggle("dim", !relacionadas.has(x.id));
