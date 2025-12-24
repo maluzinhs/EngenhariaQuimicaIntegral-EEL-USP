@@ -432,7 +432,6 @@ document.querySelectorAll(".materia").forEach(m => {
   });
 });
 </script>
-<script>
 /* ===== CONEXÕES ===== */
 const conexoes = [
   ["C1","C2"],["GA","C2"],["GA","AL"],
@@ -486,18 +485,7 @@ let fixado = null;
 
 /* ===== DESENHAR SETAS ===== */
 function desenharSetas() {
-  svg.innerHTML = `
-    <defs>
-      <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
-        <path d="M0,0 L0,6 L9,3 z" fill="#4da3ff"/>
-      </marker>
-    </defs>
-  `;
-  linhas = [];
-
- function desenharSetas() {
   const rect = grid.getBoundingClientRect();
-
   svg.setAttribute("width", rect.width);
   svg.setAttribute("height", rect.height);
 
@@ -520,42 +508,12 @@ function desenharSetas() {
     const ra = a.getBoundingClientRect();
     const rb = b.getBoundingClientRect();
 
-    const x1 = ra.left + ra.width / 2 - rect.left;
-    const y1 = ra.bottom - rect.top;
-
-    const x2 = rb.left + rb.width / 2 - rect.left;
-    const y2 = rb.top - rect.top;
-
     const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-    line.setAttribute("x1", x1);
-    line.setAttribute("y1", y1);
-    line.setAttribute("x2", x2);
-    line.setAttribute("y2", y2);
+    line.setAttribute("x1", ra.left + ra.width / 2 - rect.left);
+    line.setAttribute("y1", ra.bottom - rect.top);
+    line.setAttribute("x2", rb.left + rb.width / 2 - rect.left);
+    line.setAttribute("y2", rb.top - rect.top);
     line.setAttribute("marker-end", "url(#arrow)");
-
-    line.dataset.from = from;
-    line.dataset.to = to;
-
-    svg.appendChild(line);
-    linhas.push(line);
-  });
-}
-
-
-  conexoes.forEach(([from, to]) => {
-    const a = document.getElementById(from);
-    const b = document.getElementById(to);
-    if (!a || !b) return;
-
-    const ra = a.getBoundingClientRect();
-    const rb = b.getBoundingClientRect();
-
-    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-    line.setAttribute("x1", ra.left + ra.width/2 - g.left);
-    line.setAttribute("y1", ra.bottom - g.top);
-    line.setAttribute("x2", rb.left + rb.width/2 - g.left);
-    line.setAttribute("y2", rb.top - g.top);
-    line.setAttribute("marker-end","url(#arrow)");
 
     line.dataset.from = from;
     line.dataset.to = to;
