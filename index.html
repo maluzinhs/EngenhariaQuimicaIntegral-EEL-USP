@@ -80,6 +80,100 @@ line.active {
     <div class="materia" id="NE">Nivelamento para Engenharia</div>
     <div class="materia" id="EAC">Escrita Acadêmico-Científica</div>
   </div>
+
+  <h2>2º Período</h2>
+<div class="materias">
+  <div class="materia" id="C2">Cálculo II</div>
+  <div class="materia" id="F1">Física I</div>
+  <div class="materia" id="AL">Álgebra Linear</div>
+  <div class="materia" id="FisExp1">Física Experimental I</div>
+  <div class="materia" id="ICMAT">Introdução à Ciência dos Materiais</div>
+  <div class="materia" id="BME">Balanço de Massa e Energia</div>
+  <div class="materia" id="FQE2">Fundamentos de Química para Engenharia II</div>
+  <div class="materia" id="EI">Empreendedorismo e Inovação</div>
+</div>
+
+<h3>3º Período</h3>
+<div class="materias">
+  <div class="materia" id="Es">Estatística</div>
+  <div class="materia" id="F2">Física II</div>
+  <div class="materia" id="MEC">Mecânica</div>
+  <div class="materia" id="C3">Cálculo III</div>
+  <div class="materia" id="IMNC">Métodos Numéricos e Computacionais</div>
+  <div class="materia" id="QO1">Química Orgânica I</div>
+  <div class="materia" id="QI">Química Inorgânica</div>
+  <div class="materia" id="ES">Engenharia da Sustentabilidade</div>
+</div>
+
+<h4>4º Período</h4>
+<div class="materias">
+  <div class="materia" id="C4">Cálculo IV</div>
+  <div class="materia" id="FisExp3">Física Experimental III</div>
+  <div class="materia" id="F3">Física III</div>
+  <div class="materia" id="IMS">Introdução à Mecânica dos Sólidos</div>
+  <div class="materia" id="QO2">Química Orgânica II</div>
+  <div class="materia" id="FT1">Fenômenos de Transporte I</div>
+  <div class="materia" id="TDQ1">Termodinâmica Química Aplicada I</div>
+</div>
+
+<h5>5º Período</h5>
+<div class="materias">
+  <div class="materia" id="EA">Eletricidade Aplicada</div>
+  <div class="materia" id="MIQ">Materiais para a Indústria Química</div>
+  <div class="materia" id="IIQ">Instrumentação na Indústria Química</div>
+  <div class="materia" id="QEA">Química Analítica para Engenharia</div>
+  <div class="materia" id="LEQ1">Laboratório de Engenharia Química I</div>
+  <div class="materia" id="FT2">Fenômenos de Transporte II</div>
+  <div class="materia" id="OP1">Operações Unitárias I</div>
+  <div class="materia" id="TDQ2">Termodinâmica Química Aplicada II</div>
+</div>
+
+<h6>6º Período</h6>
+<div class="materias">
+  <div class="materia" id="AI">Análise Instrumental</div>
+  <div class="materia" id="CQA">Cinética Química Aplicada</div>
+  <div class="materia" id="CPQ">Controle de Processos Químicos</div>
+  <div class="materia" id="FT3">Fenômenos de Transporte III</div>
+  <div class="materia" id="LEQ2">Laboratório de Engenharia Química II</div>
+  <div class="materia" id="OP2">Operações Unitárias II</div>
+  <div class="materia" id="BQI">Bioquímica</div>
+</div>
+
+<h7>7º Período</h7>
+<div class="materias">
+  <div class="materia" id="POT">Psicologia Organizacional e do Trabalho</div>
+  <div class="materia" id="EMA">Engenharia do Meio Ambiente</div>
+  <div class="materia" id="RQ">Reatores Químicos</div>
+  <div class="materia" id="OP3">Operações Unitárias III</div>
+  <div class="materia" id="LEQ3">Laboratório de Engenharia Química III</div>
+  <div class="materia" id="EPQ1">Engenharia de Processos Químicos I</div>
+  <div class="materia" id="EQ">Engenharia da Qualidade</div>
+  <div class="materia" id="GN">Gestão de Negócios</div>
+  <div class="materia" id="EB">Engenharia Bioquímica</div>
+</div>
+
+ <h8>8º Período</h8>
+<div class="materias">
+  <div class="materia" id="PIQ">Projeto na Indústria Química</div>
+  <div class="materia" id="EE">Engenharia Econômica</div>
+  <div class="materia" id="Pol">Polímeros</div>
+  <div class="materia" id="LEQ4">Laboratório de Engenharia Química IV</div>
+  <div class="materia" id="EPQ2">Engenharia de Processos Químicos II</div>
+  <div class="materia" id="MSP">Modelagem e Simulação de Processos</div>
+  <div class="materia" id="PQI">Processos Químicos Industriais</div>
+  <div class="materia" id="PB">Processos Bioquímicos</div>
+</div>
+
+<h9>9º Período</h9>
+<div class="materias">
+  <div class="materia" id="TCC1">Trabalho de Conclusão de Curso I</div>
+  <div class="materia" id="ESUP">Estágio Supervisionado</div>
+</div>
+
+<h10>10º Período</h10>
+<div class="materias">
+  <div class="materia" id="TCC2">Trabalho de Conclusão de Curso II</div>
+</div>  
 </div>
 
 <script>
@@ -87,9 +181,96 @@ line.active {
    Ajuste depois se quiser.
 */
 const conexoes = [
-  ["GA","C1"],
-  ["C1","QGE"],
-  ["FQE1","QGE"]
+  /* ===== 1º → 2º ===== */
+  ["C1","C2"],
+  ["GA","C2"],
+  ["GA","AL"],
+
+  /* ===== 2º → 3º ===== */
+  ["C1","F2"],
+  ["F1","F2"],
+  ["GA","MEC"],
+  ["F1","MEC"],
+  ["C2","C3"],
+  ["GA","IMNC"],
+  ["C2","IMNC"],
+  ["FQE1","QO1"],
+  ["FQE2","QO1"],
+  ["C2","ES"],
+
+  /* ===== 3º → 4º ===== */
+  ["C3","C4"],
+  ["AL","C4"],
+  ["FisExp1","FisExp3"],
+  ["C2","F3"],
+  ["F2","F3"],
+  ["MEC","IMS"],
+  ["QO1","QO2"],
+  ["MEC","FT1"],
+  ["C3","FT1"],
+  ["C2","TDQ1"],
+  ["F2","TDQ1"],
+  ["BME","TDQ1"],
+
+  /* ===== 4º → 5º ===== */
+  ["F3","EA"],
+  ["ICMAT","MIQ"],
+  ["C4","IIQ"],
+  ["FT1","IIQ"],
+  ["Es","QEA"],
+  ["FQE2","QEA"],
+  ["QGE","QEA"],
+  ["FT1","LEQ1"],
+  ["C4","FT2"],
+  ["F2","FT2"],
+  ["FT1","FT2"],
+  ["FT1","OP1"],
+  ["TDQ1","TDQ2"],
+
+  /* ===== 5º → 6º ===== */
+  ["QEA","AI"],
+  ["TDQ2","CQA"],
+  ["C4","CPQ"],
+  ["IIQ","CPQ"],
+  ["IMNC","CPQ"],
+  ["FT2","FT3"],
+  ["FT1","FT3"],
+  ["FT2","OP2"],
+  ["QO2","BQI"],
+
+  /* ===== 6º → 7º ===== */
+  ["QI","EMA"],
+  ["CQA","RQ"],
+  ["FT3","OP3"],
+  ["OP1","LEQ3"],
+  ["OP2","LEQ3"],
+  ["FT3","EPQ1"],
+  ["OP2","EPQ1"],
+  ["Es","EQ"],
+  ["BQI","EB"],
+
+  /* ===== 7º → 8º ===== */
+  ["OP2","PIQ"],
+  ["RQ","PIQ"],
+  ["Es","EE"],
+  ["QO2","Pol"],
+  ["RQ","LEQ4"],
+  ["CPQ","LEQ4"],
+  ["EPQ1","EPQ2"],
+  ["OP3","MSP"],
+  ["RQ","MSP"],
+  ["IMNC","MSP"],
+  ["QI","PQI"],
+  ["QO2","PQI"],
+  ["OP3","PQI"],
+  ["EB","PB"],
+
+  /* ===== 8º → 9º ===== */
+  ["PQI","TCC1"],
+  ["CQA","TCC1"],
+
+  /* ===== 9º → 10º ===== */
+  ["TCC1","TCC2"]
 ];
 
 const svg = document.getElementById("arrows");
