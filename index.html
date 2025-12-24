@@ -6,7 +6,7 @@
 
 <style>
 .materia.dim {
-  opacity: 0.25;
+  opacity: 0.2;
   filter: grayscale(100%);
 }
   .periodo {
@@ -357,35 +357,50 @@ function desenharSetas() {
 }
 
 /* ===== CLIQUE FIXA / DESFIXA ===== */
-document.querySelectorAll(".materia").forEach(m => {
-  m.addEventListener("click", () => {
-if (fixado === m.id) {
-  fixado = null;
-linhas.forEach(l => l.classList.remove("active"));
- document
-        .querySelectorAll(".materia")
-        .forEach(x => x.classList.remove("dim"));
+function ativarInteracao() {
+  document.querySelectorAll(".materia").forEach(m => {
+    m.onclick = () => {
 
-      return;  
-}
-fixado = m.id;
-const relacionadas = new Set([m.id]);
-linhas.forEach(l => {
-      const ativa = l.dataset.from === m.id || l.dataset.to === m.id;
-      l.classList.toggle("active", ativa);
+      // RESET
+      if (fixado === m.id) {
+        fixado = null;
 
-      if (ativa) {
-        relacionadas.add(l.dataset.from);
-        relacionadas.add(l.dataset.to);
+        linhas.forEach(l => l.classList.remove("active"));
+        document
+          .querySelectorAll(".materia")
+          .forEach(x => x.classList.remove("dim"));
+
+        return;
       }
-    });
- document.querySelectorAll(".materia").forEach(x => {
-      x.classList.toggle("dim", !relacionadas.has(x.id));
-    });
+
+      // FIXA NOVA
+      fixado = m.id;
+
+      const relacionadas = new Set([m.id]);
+
+      linhas.forEach(l => {
+        const ativa = l.dataset.from === m.id || l.dataset.to === m.id;
+
+        l.classList.toggle("active", ativa);
+
+        if (ativa) {
+          relacionadas.add(l.dataset.from);
+          relacionadas.add(l.dataset.to);
+        }
+      });
+
+      document.querySelectorAll(".materia").forEach(x => {
+        x.classList.toggle("dim", !relacionadas.has(x.id));
+      });
+    };
   });
+}
+
+window.addEventListener("load", () => {
+  desenharSetas();
+  ativarInteracao();
 });
 
-window.addEventListener("load", desenharSetas);
 window.addEventListener("resize", desenharSetas);
 </script>
 
