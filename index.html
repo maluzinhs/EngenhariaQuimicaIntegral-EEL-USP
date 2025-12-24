@@ -70,6 +70,11 @@ svg {
   z-index: 1;
 }
 
+.materia {
+  position: relative;
+  z-index: 2;
+}
+
 line {
   stroke: #4da3ff;
   stroke-width: 2;
@@ -421,6 +426,131 @@ document.querySelectorAll(".materia").forEach(m => {
     linhas.forEach(l => l.classList.remove("active"));
   });
 });
+</script>
+<script>
+/* ===== CONEXÕES ===== */
+const conexoes = [
+  ["C1","C2"],["GA","C2"],["GA","AL"],
+  ["C1","F2"],["F1","F2"],
+  ["GA","MEC"],["F1","MEC"],
+  ["C2","C3"],["GA","IMNC"],["C2","IMNC"],
+  ["FQE1","QO1"],["FQE2","QO1"],
+  ["C2","ES"],
+
+  ["C3","C4"],["AL","C4"],
+  ["FisExp1","FisExp3"],
+  ["C2","F3"],["F2","F3"],
+  ["MEC","IMS"],["QO1","QO2"],
+  ["MEC","FT1"],["C3","FT1"],
+  ["C2","TDQ1"],["F2","TDQ1"],["BME","TDQ1"],
+
+  ["F3","EA"],["ICMAT","MIQ"],
+  ["C4","IIQ"],["FT1","IIQ"],
+  ["Es","QEA"],["FQE2","QEA"],["QGE","QEA"],
+  ["FT1","LEQ1"],
+  ["C4","FT2"],["F2","FT2"],["FT1","FT2"],
+  ["FT1","OP1"],["TDQ1","TDQ2"],
+
+  ["QEA","AI"],["TDQ2","CQA"],
+  ["C4","CPQ"],["IIQ","CPQ"],["IMNC","CPQ"],
+  ["FT2","FT3"],["FT1","FT3"],
+  ["FT2","OP2"],["QO2","BQI"],
+
+  ["QI","EMA"],["CQA","RQ"],
+  ["FT3","OP3"],
+  ["OP1","LEQ3"],["OP2","LEQ3"],
+  ["FT3","EPQ1"],["OP2","EPQ1"],
+  ["Es","EQ"],["BQI","EB"],
+
+  ["OP2","PIQ"],["RQ","PIQ"],
+  ["Es","EE"],["QO2","Pol"],
+  ["RQ","LEQ4"],["CPQ","LEQ4"],
+  ["EPQ1","EPQ2"],
+  ["OP3","MSP"],["RQ","MSP"],["IMNC","MSP"],
+  ["QI","PQI"],["QO2","PQI"],["OP3","PQI"],
+  ["EB","PB"],
+
+  ["PQI","TCC1"],["CQA","TCC1"],
+  ["TCC1","TCC2"]
+];
+
+const svg = document.getElementById("arrows");
+const grid = document.getElementById("grid");
+let linhas = [];
+let fixado = null;
+
+/* ===== DESENHAR SETAS ===== */
+function desenharSetas() {
+  svg.innerHTML = `
+    <defs>
+      <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L9,3 z" fill="#4da3ff"/>
+      </marker>
+    </defs>
+  `;
+  linhas = [];
+
+  const g = grid.getBoundingClientRect();
+
+  conexoes.forEach(([from, to]) => {
+    const a = document.getElementById(from);
+    const b = document.getElementById(to);
+    if (!a || !b) return;
+
+    const ra = a.getBoundingClientRect();
+    const rb = b.getBoundingClientRect();
+
+    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    line.setAttribute("x1", ra.left + ra.width/2 - g.left);
+    line.setAttribute("y1", ra.bottom - g.top);
+    line.setAttribute("x2", rb.left + rb.width/2 - g.left);
+    line.setAttribute("y2", rb.top - g.top);
+    line.setAttribute("marker-end","url(#arrow)");
+
+    line.dataset.from = from;
+    line.dataset.to = to;
+
+    svg.appendChild(line);
+    linhas.push(line);
+  });
+}
+
+/* ===== HOVER + CLIQUE ===== */
+document.querySelectorAll(".materia").forEach(m => {
+  m.addEventListener("mouseenter", () => {
+    if (!fixado) destacar(m.id);
+  });
+
+  m.addEventListener("mouseleave", () => {
+    if (!fixado) limpar();
+  });
+
+  m.addEventListener("click", () => {
+    if (fixado === m.id) {
+      fixado = null;
+      limpar();
+    } else {
+      fixado = m.id;
+      destacar(m.id);
+    }
+  });
+});
+
+function destacar(id) {
+  linhas.forEach(l => {
+    l.classList.toggle(
+      "active",
+      l.dataset.from === id || l.dataset.to === id
+    );
+  });
+}
+
+function limpar() {
+  linhas.forEach(l => l.classList.remove("active"));
+}
+
+window.addEventListener("load", desenharSetas);
+window.addEventListener("resize", desenharSetas);
 </script>
 
 </body>
