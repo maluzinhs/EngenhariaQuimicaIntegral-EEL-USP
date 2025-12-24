@@ -5,17 +5,17 @@
 <title>Fluxograma – Engenharia Química (EEL-USP)</title>
 
 <style>
-body {
-  margin: 0;
-  background: #2b2b2b;
-  color: white;
-  font-family: Arial, sans-serif;
-}
-  .materia.dim {
-  opacity: 0.15;
-  filter: grayscale(80%);
+line {
+  stroke: #4da3ff;
+  stroke-width: 2;
+  opacity: 0.12;          /* sempre visível */
+  transition: opacity 0.2s, stroke-width 0.2s;
 }
 
+line.active {
+  opacity: 1;
+  stroke-width: 4;
+}
 
 h1 {
   text-align: center;
@@ -52,6 +52,11 @@ h1 {
   inset: 0;
   pointer-events: none;
   z-index: 1;
+}
+
+.materia {
+  position: relative;
+  z-index: 2;
 }
 
 line {
